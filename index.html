@@ -1,17 +1,23 @@
+
+index.html
+
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moataz Store | الحسابات</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Moataz Store | الفخامة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;900&family=Amiri:wght@700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary: #ff2fcf;
-            --secondary: #00f2ff;
-            --tertiary: #a200ff;
-            --text: #ffffff;
-            --card-glass: rgba(255, 255, 255, 0.07);
+            --gold: #D4AF37;
+            --gold-light: #F2D06B;
+            --gold-dark: #AA8C2C;
+            --black: #050505;
+            --dark-card: #111111;
+            --white: #ffffff;
         }
         * {
             margin: 0;
@@ -20,321 +26,168 @@
             font-family: 'Cairo', sans-serif;
         }
         body {
-            background: #0f0c29;
-            color: var(--text);
+            background-color: var(--black);
+            color: var(--white);
             min-height: 100vh;
             overflow-x: hidden;
-            padding-bottom: 50px;
-        }
-        /* الخلفية الحية */
-        .bg-gradient {
-            position: fixed;
-            inset: 0;
-            background:
-                radial-gradient(circle at 0% 0%, var(--tertiary), transparent 50%),
-                radial-gradient(circle at 100% 0%, var(--primary), transparent 50%),
-                radial-gradient(circle at 50% 100%, var(--secondary), transparent 50%);
-            opacity: 0.4;
-            z-index: -1;
-            animation: pulseBg 10s infinite alternate;
-        }
-        @keyframes pulseBg {
-            0% {
-                opacity: 0.3;
-            }
-            100% {
-                opacity: 0.5;
-            }
-        }
-        /* رأس الصفحة */
-        header {
-            padding: 20px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            background: rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        h1 {
-            font-weight: 900;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            background: linear-gradient(to right, #fff, var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .home-btn {
-            text-decoration: none;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .home-btn:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-        /* الشبكة (Masonry Style) */
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            columns: 3 300px;
-            /* CSS Columns for Masonry */
-            column-gap: 25px;
-        }
-        .card {
-            background: var(--card-glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 24px;
-            margin-bottom: 25px;
-            /* Spacing for masonry */
-            break-inside: avoid;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            position: relative;
-        }
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--secondary);
-            box-shadow: 0 15px 30px rgba(0, 242, 255, 0.15);
-        }
-        .img-box {
-            position: relative;
-            overflow: hidden;
-        }
-        .card img {
-            width: 100%;
-            display: block;
-            transition: 0.5s;
-        }
-        .card:hover img {
-            transform: scale(1.1);
-        }
-        .card-info {
-            padding: 20px;
-            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
-        }
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 800;
-            margin-bottom: 5px;
-        }
-        .card-tag {
-            display: inline-block;
-            font-size: 0.8rem;
-            padding: 4px 10px;
-            border-radius: 8px;
-            background: linear-gradient(45deg, var(--primary), var(--tertiary));
-            color: #fff;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        /* نافذة العرض (Fullscreen Overlay) */
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(5, 7, 10, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.4s;
-            padding: 20px;
         }
-        .overlay.active {
+        /* الخلفية المزركشة (Pattern) */
+        .pattern-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* نمط زخرفي هندسي ذهبي خفيف */
+            background-image:
+                linear-gradient(30deg, #111 12%, transparent 12.5%, transparent 87%, #111 87.5%, #111),
+                linear-gradient(150deg, #111 12%, transparent 12.5%, transparent 87%, #111 87.5%, #111),
+                linear-gradient(30deg, #111 12%, transparent 12.5%, transparent 87%, #111 87.5%, #111),
+                linear-gradient(150deg, #111 12%, transparent 12.5%, transparent 87%, #111 87.5%, #111),
+                radial-gradient(circle at 50% 50%, #222 10%, #050505 60%);
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0;
             opacity: 1;
-            pointer-events: all;
         }
-        .overlay-content {
-            display: flex;
-            flex-direction: column;
-            /* Mobile first */
-            background: #111;
-            border-radius: 30px;
-            overflow: hidden;
-            max-width: 900px;
-            width: 100%;
-            border: 1px solid var(--secondary);
-            box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
-            transform: scale(0.9);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* تأثير ذهبي إضافي */
+        .gold-overlay {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05), transparent 70%);
+            z-index: -1;
         }
-        .overlay.active .overlay-content {
-            transform: scale(1);
-        }
-        .overlay-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-        .overlay-details {
-            padding: 30px;
-            text-align: right;
-        }
-        .overlay h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
-        .overlay p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #ccc;
-            margin-bottom: 30px;
-        }
-        .buy-btn {
-            display: block;
+        .main-card {
+            background: rgba(10, 10, 10, 0.95);
+            border: 2px solid var(--gold);
+            padding: 60px 40px;
+            border-radius: 4px;
+            /* زوايا حادة لتبدو أكثر رسمية */
             text-align: center;
-            background: linear-gradient(90deg, var(--primary), var(--tertiary));
-            color: #fff;
-            text-decoration: none;
-            padding: 18px;
-            border-radius: 15px;
-            font-weight: 800;
-            font-size: 1.2rem;
-            transition: 0.3s;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
+            position: relative;
         }
-        .buy-btn:hover {
-            box-shadow: 0 0 30px var(--primary);
-            letter-spacing: 1px;
-        }
-        .close-btn {
+        /* زركشة الزوايا */
+        .corner {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            /* Arabic layout reversed */
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: #fff;
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--gold);
+            transition: 0.5s;
+        }
+        .top-right {
+            top: -2px;
+            right: -2px;
+            border-bottom: none;
+            border-left: none;
+        }
+        .bottom-left {
+            bottom: -2px;
+            left: -2px;
+            border-top: none;
+            border-right: none;
+        }
+        .logo-box {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px;
             border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5rem;
+            padding: 5px;
+            border: 2px dashed var(--gold);
+            animation: rotateBorder 20s linear infinite;
+        }
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+        }
+        @keyframes rotateBorder {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        h1 {
+            font-family: 'Amiri', serif;
+            /* خط كلاسيكي للعناوين */
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            letter-spacing: 0px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 40px;
+            font-weight: 400;
+            border-bottom: 1px solid #333;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .btn-gold {
+            display: block;
+            width: 100%;
+            padding: 18px 0;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-dark));
+            background-size: 200% auto;
+            color: #000;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.3rem;
+            border-radius: 2px;
+            transition: 0.5s;
+            border: 1px solid var(--gold-light);
+            text-transform: uppercase;
+        }
+        .btn-gold:hover {
+            background-position: right center;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            letter-spacing: 1px;
+            color: #fff;
+        }
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-icon {
+            color: var(--gold);
+            font-size: 1rem;
+            text-decoration: none;
+            border: 1px solid var(--gold);
+            padding: 10px 20px;
             transition: 0.3s;
-            z-index: 10;
         }
-        .close-btn:hover {
-            background: var(--primary);
-            transform: rotate(90deg);
-        }
-        @media (min-width: 768px) {
-            .overlay-content {
-                flex-direction: row;
-            }
-            .overlay-img {
-                width: 50%;
-                height: auto;
-            }
-            .overlay-details {
-                width: 50%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
+        .social-icon:hover {
+            background: var(--gold);
+            color: #000;
         }
     </style>
 </head>
 <body>
-    <div class="bg-gradient"></div>
-    <header>
-        <h1>💎 الحسابات المميزة 💎</h1>
-        <a href="index.html" class="home-btn">العودة للرئيسية</a>
-    </header>
-    <div class="container">
-        <!-- Card 1 -->
-        <div class="card"
-            onclick="openOverlay('https://iili.io/f5Uld8B.md.jpg', 'حساب ساكورا لفل 83', 'امتلك الأسطورة الآن!<br>• لفل الحساب: 83<br>• سكن الساكورا الكامل<br>• جميع الباسات النادرة<br>• أسلحة مطورة ماكس')">
-            <div class="img-box">
-                <img src="https://iili.io/f5Uld8B.md.jpg">
-            </div>
-            <div class="card-info">
-                <span class="card-tag">🔥 نادر جداً</span>
-                <div class="card-title">حساب ساكورا لفل 83</div>
-            </div>
+    <div class="pattern-bg"></div>
+    <div class="gold-overlay"></div>
+    <div class="main-card">
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="logo-box">
+            <img src="https://i.postimg.cc/652Yg1H9/alsh-ar.jpg" alt="Logo" class="logo-img">
         </div>
-        <!-- Card 2 -->
-        <div class="card"
-            onclick="openOverlay('https://iili.io/f5UGS1a.md.jpg', 'حساب الحركات النادرة', 'تميز بحركات لا يملكها غيرك!<br>• رقصات نادرة ومخفية<br>• أنيماشن دخول أسطوري<br>• سكنات حصرية قديمة')">
-            <div class="img-box">
-                <img src="https://iili.io/f5UGS1a.md.jpg">
-            </div>
-            <div class="card-info">
-                <span class="card-tag">💃 حركات</span>
-                <div class="card-title">حساب الحركات النادرة</div>
-            </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="card"
-            onclick="openOverlay('https://iili.io/f5UhDJa.md.jpg', 'حساب شعار ذهبي 79', 'القوة والهيبة في حساب واحد.<br>• لفل 79<br>• الشعار الذهبي (V-Badge Style)<br>• بروفايل أسطوري')">
-            <div class="img-box">
-                <img src="https://iili.io/f5UhDJa.md.jpg">
-            </div>
-            <div class="card-info">
-                <span class="card-tag">⭐ ذهبي</span>
-                <div class="card-title">حساب شعار ذهبي 79</div>
-            </div>
-        </div>
-        <!-- Card 4 -->
-        <div class="card"
-            onclick="openOverlay('https://iili.io/f5UwKCB.md.jpg', 'حساب الكريمنال', 'رعب السيرفر!<br>• سكن الكريمنال الأحمر والأخضر<br>• لفل 68<br>• معدل K/D عالي')">
-            <div class="img-box">
-                <img src="https://iili.io/f5UwKCB.md.jpg">
-            </div>
-            <div class="card-info">
-                <span class="card-tag">👹 كريمنال</span>
-                <div class="card-title">حساب الكريمنال</div>
-            </div>
+        <h1>معتز ستور</h1>
+        <p class="subtitle">رفاهية اللعب • حسابات النخبة</p>
+        <a href="accounts.html" class="btn-gold">دخـول المـتـجـر</a>
+        <div class="social-links">
+            <a href="https://wa.me/962775355332" class="social-icon">واتساب</a>
+            <a href="https://instagram.com/motazstore" class="social-icon">إنستغرام</a>
         </div>
     </div>
-    <!-- Overlay -->
-    <div id="overlay" class="overlay">
-        <div class="overlay-content">
-            <button class="close-btn" onclick="closeOverlay()">×</button>
-            <img id="ov-img" class="overlay-img">
-            <div class="overlay-details">
-                <h2 id="ov-title"></h2>
-                <p id="ov-desc"></p>
-                <a id="ov-buy" href="#" target="_blank" class="buy-btn">شراء الآن</a>
-            </div>
-        </div>
-    </div>
-    <script>
-        const overlay = document.getElementById('overlay');
-        const ovImg = document.getElementById('ov-img');
-        const ovTitle = document.getElementById('ov-title');
-        const ovDesc = document.getElementById('ov-desc');
-        const ovBuy = document.getElementById('ov-buy');
-        function openOverlay(img, title, desc) {
-            ovImg.src = img;
-            ovTitle.innerText = title;
-            ovDesc.innerHTML = desc;
-            ovBuy.href = "https://wa.me/962775355332?text=" + encodeURIComponent("أريد شراء هذا الحساب: " + title);
-            overlay.classList.add('active');
-        }
-        function closeOverlay() {
-            overlay.classList.remove('active');
-        }
-        // Close when clicking outside
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) closeOverlay();
-        });
-    </script>
 </body>
 </html>
